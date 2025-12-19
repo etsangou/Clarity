@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Password</title>
+    <style type="text/css">
+        body {
+            background-color: #f0f0f2;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        div {
+            width: 600px;
+            margin: 5em auto;
+            padding: 2em;
+            background-color: #fdfdff;
+            border-radius: 0.5em;
+            box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+        a:link, a:visited {
+            color: #38488f;
+            text-decoration: none;
+        }
+        @media (max-width: 700px) {
+            div {
+                margin: 0 auto;
+                width: auto;
+            }
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>  
+</head>
+<body>
+    <div>
+        <h1>Entrez votre mot de passe :</h1>
+        <input type="text" id="passwordInput">
+        <button onclick="checkPassword()">Valider</button>
+        <p id="passwordMessage"></p>
+        <button onclick="togglePasswordVisibility()" id="toggleButton">Masquer le mot de passe</button>
+    </div>
+    <script>
+        var passwordVisible = true;  // Initialisé à true pour afficher le mot de passe par défaut.
+
+        // Fonction pour gérer l'événement "Entrée" dans le champ de texte du mot de passe.
+        document.getElementById("passwordInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        function checkPassword() {
+            var enteredPassword = document.getElementById("passwordInput").value;
+            // Mot de passe correct (à des fins de démonstration)
+            var correctPassword = "goober";
+
+            if (enteredPassword === correctPassword) {
+                document.getElementById("passwordMessage").textContent = "Mot de passe correct";
+                document.getElementById("passwordMessage").style.color = "green";
+            } else {
+                document.getElementById("passwordMessage").textContent = "Mot de passe incorrect";
+                document.getElementById("passwordMessage").style.color = "red";
+            }
+        }
+
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("passwordInput");
+            var toggleButton = document.getElementById("toggleButton");
+
+            if (passwordVisible) {
+                passwordInput.type = "password";
+                toggleButton.textContent = "Afficher le mot de passe";
+                passwordVisible = false;
+            } else {
+                passwordInput.type = "text";
+                toggleButton.textContent = "Masquer le mot de passe";
+                passwordVisible = true;
+            }
+        }
+    </script>
+</body>
+</html>
