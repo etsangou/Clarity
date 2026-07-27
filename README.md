@@ -416,3 +416,111 @@ Structuration de code Clarity.py
 Pour Clarity V1 nous utiliserons python.
 Pour Clarity V2 nous utiliserons C++/C#.
 
+
+
+
+Clarity est un programme de forçage de mot de passe de la marque Shitwait, non destiné à la vente, mais seulement à l’entraînement.
+
+Celui-ci est utilisable sur n’importe quel terminal classique Clarity possédant un terminal intégré avec ses propres fonctions.
+
+En effet, Clarity possède de nombreuse fonctions allant du brutforce classique au brutforce orienté (en utilisant des informations sur la victime), c’est la multiplicité des fonctions et l’efficacité de ses dernières qui fait la force et l’essence du projet Clarity. Le programme possède en tout 5 fonctions d’attaques, y fonctions de paramètrage et z fonctions d’aide à l’utilisateur. Avant d’utiliser les fonctions, l’utilisateur devra rentrer des informations tel que le type de mot de passe ou la taille de ce dernier par exemple.
+
+Les fonctions d’attaque sont les suivantes :
+
+- Brutforce classique avec la fonction `brutforce` sans arguments : essai toutes les combinaisons possible de tous les caractères jusqu’à craquage du mot de passe.
+    
+- Brutforce dictionnaire avec la fonction `brutforce : dico` Prend en argument le mot clé dico et affiche les différents dictionnaire disponible dans le programme.
+    
+- `brutforce : dico(langue1,langue2,…)` essayera tous les mots des dictionnaires « langue1 » , « langue2 » , « … » rentrés en paramètre d’arguments par l’utilisateur.
+    
+- `brutforce : dico(global)` essayera tous les mots de tous les dictionnaires disponibles sur le programme Clarity.
+    
+- Brutforce dataliste avec la fonction `brutforce : datalist` prend en argument le mot clé datalist et affiche les différentes listes de donnés disponibles.
+    
+- `brutforce : datalist(mostused list)` prend en paramètre d’argument le mot clé mostused suivis d
+    
+- Brutforce orienté avec la fonction `brutforce : targeted, mydata` prend en argument le mot clé targeted et le fichier mydata contenant les informations entrée au préalable par l’utilisateur : essai chacune des informations donnés sur l’utilisateur en les modifiant et en les corrélant jusqu’à trouver le mot de passe de la victime.
+    
+
+L’utilisateur pourra paramétrer ses fonctions à l’aide des fonctions de paramétrage suivante :
+
+- Parametrage du fichier mydata avec la fonction `settings : mydata` qui prend en argument le mot clé mydata : ouvre le fichier mydata en mode édition pour que l’utilisateur puisse ajouter / modifier des informations.
+    
+- Parametrage des informations préalable avec la fonctions `settings : data` qui prend en argument le mot clé data : ouvre le menu d’édition d’informations préalable pour que l’utilisateur puisse ajouter / modifier des informations.
+    
+
+Enfin, voici les différentes fonctions d’information mises à disposition de l’utilisateur :
+
+- Informations sur les fonctions disponibles avec la fonction `help : fonctions` qui prend en argument le mot clé fonctions. Envoie l’utilisateur dans un menu contenant chacune des fonctions disponibles sur le programme Clarity. Ce dernier aura la possibilité d’obtenir d’avantage d’informations sur celle-ci ainsi que sur leur fonctionnement. La fonction appelé sans argument renverra la liste des fonctions disponible sur le programme.
+    
+- Informations sur Clarity avec la fonction `help : Clarity`. Envoie l’utilisateur dans un menu détaillant le fonctionnement logique du programme.
+    
+- Informations sur
+    
+
+Structure de Clarity 🙈:
+
+Clarity 
+├─Main 
+├─Algorithme
+└─Fonction
+
+Clarity :
+
+- Fonction Start
+- Fonction Loop
+
+Algorithme :
+
+- Algorithme du brute force
+- Algorithme de mydata
+- Algorithme du dictionnaire
+
+Fonction :
+
+- _test_passwords :_ Permet d’accéder au site web et à tester tous les mots de passe qui lui sont donnés.
+- _loadDictionaryFiles :_ Permet de mettre tous les mots d’un fichier dans une liste avec le path de ce fichier.
+- _loadAllDictionaryFiles :_ Permet de mettre tous les mots de chaque dictionaire dans une liste via _loadDataFiles_.
+- _Test_MoreUsedWord :_ Nouvelle version de la fonction _Moreuse,_ permet maintenant de choisir n’import quel entier compris entre 1 et 1.000.000 des fichiers _moreUseWord_ pour les mettre dans une liste via _loadDataFiles_ et les tester via _test_passwords._
+- _Test_MyData :_ Fonction NON Faite.
+- _loadDataFiles :_ Permet de mettre des mots de fichiers dans une liste.
+- _format_time :_ Permet de transformer des secondes en Min/Heure/Jours.
+- _Test_Dictionnaire :_ Fonction pour simplifier l’utilisation des fonctions _loadDictionaryFiles_ et _loadAllDictionaryFiles._
+
+Features à implémenter :
+
+Fonction d’attaque
+
+- Commande moreuse `<nombre_de_mots_tester> [--help] ou [<web> <url> <textzonetype> <nametextzonetype> <stopzonetype> <namestopzonetype>] ou [<mouse> <with_délai> <délai>]`
+- Commande mydata `<data_file> [--help] ou [<web> <url> <textzonetype> <nametextzonetype> <stopzonetype> <namestopzonetype>] ou [<mouse> <with_délai> <délai>]`
+- Commande bruteforce `<Nombre_de_Caractère (1-8)> <Enable_caractère_spéciaux> [--help] ou [<web> <url> <textzonetype> <nametextzonetype> <stopzonetype> <namestopzonetype>] ou [<mouse> <with_délai> <délai>]`
+- Commande dictionary `<all>, <language> [--help] ou [<web> <url> <textzonetype> <nametextzonetype> <stopzonetype> <namestopzonetype>] ou [<mouse> <with_délai> <délai>]`
+
+Fonction de gestion :
+
+- Commande snap mydata <data_file> [--help] ou `[<web> <url> <textzonetype> <nametextzonetype> <stopzonetype> <namestopzonetype>] ou [<mouse> <with_délai> <délai>]`
+- Commande clear/cls
+- Commande exit
+
+Option :
+
+Pour `<textzonetype>` ou `<stopzonetype>` les options sont les suivantes:
+
+- i (pour utiliser ByID)
+- n (pour utiliser ByName)
+- p (pour utiliser ByPATH)
+- css (pour utiliser ByCSS_Selector)
+
+Exemple de fonction :
+
+moreuse 1830193 `[](http://82.65.183.109:888/)[http://82.65.183.109:888](http://82.65.183.109:888) -i passwordInput -i passwordMessage`
+
+To do list Enzo :
+
+- Refaire les fonctions avec les nouvelles options (et supprimer celles qui ne sont plus utile) ;
+- Faire en sort de ne pas utiliser le chemin complet pour chercher le dossier .Data et .Language, mais chercher le dossier enfant ;
+- Mettre a jour la fonction test_passwords() pour utiliser les variables ;
+- Recoder la fonction moreuse pour toujours utiliser le fichier 1 000 000, mais ne prendre que les x premier MDP ;
+- Finir le code dictionary (variable texte = "language" à modifier)
+- Coder la fonction brutforce
+- Coder la fonction mouse dans test_passwords()
